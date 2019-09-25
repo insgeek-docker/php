@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+if [ ! -f "/usr/local/bin/httpd" ]; then
+ln -s /usr/local/php/bin/php /usr/local/bin/php
+ln -s /usr/local/php/bin/phpize /usr/local/bin/phpize
+ln -s /usr/local/php/bin/php-config /usr/local/bin/php-config
+ln -s /usr/local/php/bin/pecl /usr/local/bin/pecl
+ln -s /usr/local/apache/bin/httpd /usr/local/bin/httpd
+fi
+
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /var/run/httpd.pid
+
+exec httpd -DFOREGROUND "$@"
