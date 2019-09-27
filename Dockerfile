@@ -20,7 +20,7 @@ COPY no-debug-zts-20160303/*.so /usr/local/php/lib/php/extensions/no-debug-zts-2
 ADD rabbitmq-c.tar.gz /usr/local/
 RUN echo "extension=amqp.so" > /usr/local/php/etc/php.d/02.amqp.ini && \
     echo "extension=phalcon.so" > /usr/local/php/etc/php.d/00.phalcon.ini && \
-    echo "extension=ssh2.so" > /usr/local/php/etc/php.d/00.ssh2.ini
+    echo "extension=ssh2.so" > /usr/local/php/etc/php.d/00.ssh2.ini && rm -rf /oneinstack
 
 STOPSIGNAL WINCH
 
